@@ -5,13 +5,10 @@ import android.os.Handler
 import android.os.Looper
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
-import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
 
 
 class EditorActivity : AppCompatActivity() {
 
-    var pdfRecycler: RecyclerView? = null
     var pdfRenderHandler: Handler? = null
     var pdfPageCount: Int = 0
 
@@ -24,11 +21,7 @@ class EditorActivity : AppCompatActivity() {
         } else {
             hideSystemUI()
         }
-        pdfRecycler =
-            findViewById<RecyclerView>(R.id.pdfRecycler).apply {
-                layoutManager = LinearLayoutManager(this@EditorActivity)
-                addOnItemTouchListener(RecyclerTouchHandler())
-            }
+
         pdfRenderHandler = Handler(Looper.getMainLooper())
 
 
@@ -42,7 +35,7 @@ class EditorActivity : AppCompatActivity() {
 
     override fun onStart() {
         super.onStart()
-        pdfRecycler!!.adapter = RecyclerAdapter()
+
     }
 
 
